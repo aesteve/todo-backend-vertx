@@ -1,0 +1,24 @@
+plugins {
+	id 'groovy'
+	id 'application'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile "io.vertx:vertx-core:$vertxVersion"
+	compile "io.vertx:vertx-web:$vertxVersion"
+}
+
+mainClassName = 'io.vertx.core.Launcher'
+def mainVerticle = 'io.vertx.examples.todomvc.Server'
+
+run {
+	args = ['run', mainVerticle]
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.11'
+}
